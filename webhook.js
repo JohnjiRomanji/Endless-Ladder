@@ -44,7 +44,7 @@ fetch(
           },
           // embed description
           // - text on 3rd row
-          description: `There was a new visitor to The Endless Ladder Website. They visited page ${page}`,
+          description: "There was a new visitor to The Endless Ladder Website. They visited" + toString(page),
           // custom embed fields: bold title/name, normal content/value below title
           // - located below description, above image.
           fields: [],
