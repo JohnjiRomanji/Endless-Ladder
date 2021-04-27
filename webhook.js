@@ -1,6 +1,6 @@
 function send(page) {
 fetch(
-  {process.env.WEBHOOK_URL},
+  "https://github.com/JohnjiRomanji/endless-ladder/tree/main",
   {
     method: 'post',
     headers: {
