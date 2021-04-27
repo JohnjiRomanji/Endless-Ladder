@@ -17,4 +17,4 @@ Image Sources:
  - Back Arrow Icon: https://www.freepik.com/free-icon/back-arrow_781308.htm
 
 
-For License check out [LICENSE](https://github.com/JohnjiRomanji/endless-ladder/blob/a920b11956b040a9ccd28d9019a0616d19fbb1b8/LICENSE)
+For license info check out [LICENSE](https://github.com/JohnjiRomanji/endless-ladder/blob/a920b11956b040a9ccd28d9019a0616d19fbb1b8/LICENSE)
