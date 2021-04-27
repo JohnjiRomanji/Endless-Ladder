@@ -1,4 +1,4 @@
-function send() {
+function send(page) {
 fetch(
   {process.env.WEBHOOK_URL},
   {
@@ -44,7 +44,7 @@ fetch(
           },
           // embed description
           // - text on 3rd row
-          description: 'There was a new visitor to The Endless Ladder Website',
+          description: `There was a new visitor to The Endless Ladder Website. They visited page ${page}`,
           // custom embed fields: bold title/name, normal content/value below title
           // - located below description, above image.
           fields: [],
