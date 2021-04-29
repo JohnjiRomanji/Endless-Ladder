@@ -12,8 +12,8 @@ function on_load(){
 	if (localStorage.getItem('score')===null || localStorage.getItem('score')==='hi'){
 		localStorage.setItem('score', 0)
 	}
-	if (localStorage.getItem('people')===null || localStorage.getItem('people')==='hi'){
-		localStorage.setItem('score', 0)
+	if (localStorage.getItem('people')===null){
+		localStorage.setItem('people', 0)
 	}
 	let p = document.getElementById('hscore')
 	p.innerHTML = localStorage.getItem('score')
