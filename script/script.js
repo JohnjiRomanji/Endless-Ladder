@@ -80,11 +80,11 @@ window.addEventListener("scroll", function() {
 				g.appendChild(element);
 				let o = document.getElementById('score')
 				let p = document.getElementById('hscore')
-				if (parseInt(o.innerHTML)<window.scrollY){
-				o.innerHTML=window.scrollY;
+				if (parseInt(o.innerHTML)<Math.floor(window.scrollY/50)){
+				o.innerHTML=Math.floor(window.scrollY/50);
 				if (parseInt(o.innerHTML)>=parseInt(p.innerHTML)){
-					p.innerHTML=window.scrollY;
-					localStorage.setItem('score', window.scrollY)
+					p.innerHTML=Math.floor(window.scrollY/50);
+					localStorage.setItem('score', Math.floor(window.scrollY/50))
 				}
 					
 				}
