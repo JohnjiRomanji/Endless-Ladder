@@ -2,6 +2,11 @@
 
 An (definetly not absolutely useless) endless scrolling website! 
 
+The website incluides a score counter for the amount of little taunting people you ahve crossed and the amount you have scrolled. 
+
+A backend API has been setup to store a glabal top score between everyone. 
+
+Can you beat the top score? 
 
 Deployed on [netlify](https://endless-ladder.netlify.app)
 
@@ -18,3 +23,5 @@ Image Sources:
 
 
 For license info check out [LICENSE](https://github.com/JohnjiRomanji/endless-ladder/blob/a920b11956b040a9ccd28d9019a0616d19fbb1b8/LICENSE)
+
+I spent way too long making this please play. 🥺
