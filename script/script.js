@@ -7,6 +7,91 @@
 		 - Back Arrow Icon: https://www.freepik.com/free-icon/back-arrow_781308.htm
 */
 
+var top_people=null
+var top_people_user=null
+
+var top_score=null
+var top_score_user=null
+
+function get_top_people(){
+	let url = "https://attentiveworriedcleantech.johnjiromanji.repl.co/top-score/";
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4) {
+			console.log(xhr.status);
+			console.log(xhr.responseText);
+			top_score=JSON.parse(xhr.responseText)["score"]
+			top_score_user=JSON.parse(xhr.responseText)["user"]
+			window.getElementById("lb-people").innerHTML = top_people;
+			window.getElementById("lb-people-user").innerHTML = top_people_user;
+		}};
+	
+	xhr.send();
+}
+
+function get_top_people(){
+	let url = "https://attentiveworriedcleantech.johnjiromanji.repl.co/top-people/";
+	
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4) {
+			console.log(xhr.status);
+			console.log(xhr.responseText);
+			top_people=JSON.parse(xhr.responseText)["score"]
+			top_people_user=JSON.parse(xhr.responseText)["user"]
+			document.getElementById("lb-people").innerHTML = top_people;
+			document.getElementById("lb-people-user").innerHTML = top_people_user;
+		}};
+	
+	xhr.send();
+}
+
+function get_top_score(){
+	var url = "https://attentiveworriedcleantech.johnjiromanji.repl.co/top-score/";
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	
+	xhr.onreadystatechange = function () {
+		if (xhr.readyState === 4) {
+			console.log(xhr.status);
+			console.log(xhr.responseText);
+			top_score=JSON.parse(xhr.responseText)["score"]
+			top_score_user=JSON.parse(xhr.responseText)["user"]
+			document.getElementById("lb-score").innerHTML = top_score;
+			document.getElementById("lb-score-user").innerHTML = top_score_user;
+		}};
+	
+	xhr.send();
+}
+
+function update(type, score, user){
+	var url = "https://attentiveworriedcleantech.johnjiromanji.repl.co/update-top/";
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url);
+	
+	xhr.setRequestHeader("Content-Type", "application/json");
+	
+	xhr.onreadystatechange = function () {
+	   if (xhr.readyState === 4) {
+	      console.log(xhr.status);
+	      console.log(xhr.responseText);
+	      get_top_score();
+	      get_top_people();
+	   }};
+	
+	var data = `{"type":"${type}", "score":${score}, "user":"${user}"}`;
+	
+	xhr.send(data);
+	
+
+}
 
 function on_load(){
 	if (localStorage.getItem('score')===null || localStorage.getItem('score')==='hi'){
@@ -19,8 +104,21 @@ function on_load(){
 	p.innerHTML = localStorage.getItem('score')
 	let c = document.getElementById('hpeople')
 	c.innerHTML = localStorage.getItem('people')
-	
+	get_top_score();
+	get_top_people();
+	let name = window.prompt("Enter a username for if you beat the top score: ")
+	if (name===null){name="unnamed"}
+	localStorage.setItem('user', name)
 }
+
+window.setInterval(
+	function() {
+		get_top_people();
+		get_top_score();
+	},
+	40000
+)
+
 document.querySelector("body").style.height = "1000px";
 
 const ascii = "		╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>"
@@ -53,7 +151,23 @@ function checkScroll(){
 					localStorage.setItem('people', parseInt(p.innerHTML))
 					e.innerHTML=p.innerHTML
 					
-			}}
+			}
+				if (parseInt(p.innerHTML)>parseInt(top_people)){
+					get_top_people()
+					if (parseInt(p.innerHTML)>parseInt(top_people)){
+						if (localStorage.getItem('user')===null){
+							let name = window.prompt("Congrats! You have earned a spot on the leaderboard! Enter your name as you would like it to be displayed:")
+							if (name===null){
+								name="unnamed"
+							}
+							localStorage.setItem('user', name)
+							update("people", parseInt(p.innerHTML), localStorage.getItem('user'))
+						}else{
+							update("people", parseInt(p.innerHTML), localStorage.getItem('user'))
+						}
+					}
+				}
+			}
 	}
 }
 }
@@ -88,9 +202,22 @@ window.addEventListener("scroll", function() {
 				}
 					
 				}
-				checkScroll();
+				if ((parseInt(o.innerHTML)-top_score)>50){
+					get_top_people();
+					if ((parseInt(o.innerHTML)-top_score)>50){
+							if (localStorage.getItem('user')===null){
+								let name = window.prompt("Congrats! You have earned a spot on the leaderboard! Enter your name as you would like it to be displayed:", "<unnamed>")
+								if (name===null){name="unnamed"}
+								localStorage.setItem('user', name)
+								update("score", parseInt(o.innerHTML), localStorage.getItem('user'))
+							} else {
+								update("score", parseInt(o.innerHTML), localStorage.getItem('user'));
+							}
+				}
+			
     };
-}());
+    	checkScroll();
+}}());
 
 function change() {
 	let i = document.getElementById('footer');
