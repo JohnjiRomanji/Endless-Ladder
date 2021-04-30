@@ -63,3 +63,7 @@ margin-top:-.0625pc;
 	margin-top:145px;
 	position: fixed;
 }
+
+#score-div, #lb{
+	font-family: 'Roboto', sans-serif;
+}
