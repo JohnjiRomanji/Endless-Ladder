@@ -14,25 +14,6 @@ var top_score=null
 var top_score_user=null
 
 function get_top_people(){
-	let url = "https://attentiveworriedcleantech.johnjiromanji.repl.co/top-score/";
-	
-	let xhr = new XMLHttpRequest();
-	xhr.open("GET", url);
-	
-	xhr.onreadystatechange = function () {
-		if (xhr.readyState === 4) {
-			console.log(xhr.status);
-			console.log(xhr.responseText);
-			top_score=JSON.parse(xhr.responseText)["score"]
-			top_score_user=JSON.parse(xhr.responseText)["user"]
-			window.getElementById("lb-people").innerHTML = top_people;
-			window.getElementById("lb-people-user").innerHTML = top_people_user;
-		}};
-	
-	xhr.send();
-}
-
-function get_top_people(){
 	let url = "https://attentiveworriedcleantech.johnjiromanji.repl.co/top-people/";
 	
 	let xhr = new XMLHttpRequest();
