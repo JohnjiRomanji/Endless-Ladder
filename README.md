@@ -4,7 +4,7 @@ A (definetly not absolutely useless 👀) endless scrolling website!
 
 The website incluides a score counter for the amount of little taunting people you ahve crossed and the amount you have scrolled. 
 
-A backend API has been setup to store a glabal top score between everyone. 
+A backend API has been setup to store a global top score between players. 
 
 Can you beat the top score? 
 
