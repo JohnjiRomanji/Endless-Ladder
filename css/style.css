@@ -24,6 +24,10 @@ border-width:medium;
 width:100%;
 }
 
+#s-wrap{
+	margin-left: 3px;
+}
+
 #footer {
 position:fixed;
 background-color:transparent;
