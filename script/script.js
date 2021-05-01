@@ -16,7 +16,7 @@ var top_score_user=null
 var views=null
 
 function get_views(){
-	var url = "https://attentiveworriedcleantech.johnjiromanji.repl.co/visit/";
+	var url = "https://back.johnjiromanji.repl.co/visit/";
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
@@ -33,7 +33,7 @@ function get_views(){
 }
 
 function get_top_people(){
-	let url = "https://attentiveworriedcleantech.johnjiromanji.repl.co/top-people/";
+	let url = "https://back.johnjiromanji.repl.co/top-people/";
 	
 	let xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
@@ -52,7 +52,7 @@ function get_top_people(){
 }
 
 function get_top_score(){
-	var url = "https://attentiveworriedcleantech.johnjiromanji.repl.co/top-score/";
+	var url = "https://back.johnjiromanji.repl.co/top-score/";
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
@@ -71,7 +71,7 @@ function get_top_score(){
 }
 
 function update(type, score, user){
-	var url = "https://attentiveworriedcleantech.johnjiromanji.repl.co/update-top/";
+	var url = "https://back.johnjiromanji.repl.co/update-top/";
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url);
