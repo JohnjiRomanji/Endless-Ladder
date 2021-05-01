@@ -35,7 +35,7 @@ width:100%;
 #footer {
 position:fixed;
 background-color:transparent;
-width:1.562500002pc;
+width:500px;
 border-radius:50%;
 display:flex;
 margin-left:-43%;
@@ -75,6 +75,6 @@ margin-top:-.0625pc;
 	position: fixed;
 }
 
-#score-div, #lb, #stats{
+#score-div, #lb, #stats, #footer{
 	font-family: 'Roboto', sans-serif;
 }
