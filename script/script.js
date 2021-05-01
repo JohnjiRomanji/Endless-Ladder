@@ -90,6 +90,8 @@ function on_load(){
 	let name = window.prompt("Enter a username for if you beat the top score: ")
 	if (name===null){name="unnamed"}
 	localStorage.setItem('user', name)
+	if (localStorage.getItem("totalScore")===null){localStorage.setItem("totalScore", 0)}
+	if (localStorage.getItem("totalPeople")===null){localStorage.setItem("totalPeople", 0)}
 }
 
 window.setInterval(
