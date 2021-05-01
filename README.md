@@ -1,6 +1,6 @@
 # Endless-Ladder
 
-An (definetly not absolutely useless) endless scrolling website! 
+A (definetly not absolutely useless 👀) endless scrolling website! 
 
 The website incluides a score counter for the amount of little taunting people you ahve crossed and the amount you have scrolled. 
 
