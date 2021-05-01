@@ -235,12 +235,12 @@ function change_back() {
 }
 
 function change_two() {
-	let i = document.getElementById('btn');
+	let i = document.getElementById('share');
 	i.style.backgroundColor='#C0C0C0';
 
 }
 function change_back_two() {
-	let i = document.getElementById('btn')
+	let i = document.getElementById('share')
 	i.style.backgroundColor='transparent'
 
 }
@@ -273,7 +273,7 @@ const shareData = {
   url: 'https://endless-ladder.netlify.app',
 }
 
-const btn = document.getElementById('footer');
+const btn = document.getElementById('share');
 const resultPara = document.querySelector('.result');
 
 // Must be triggered some kind of "user activation"
