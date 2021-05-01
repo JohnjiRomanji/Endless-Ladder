@@ -273,7 +273,7 @@ const shareData = {
   url: 'https://endless-ladder.netlify.app',
 }
 
-const btn = document.getElementById('btn');
+const btn = document.getElementById('footer');
 const resultPara = document.querySelector('.result');
 
 // Must be triggered some kind of "user activation"
