@@ -112,6 +112,7 @@ function on_load(){
 	localStorage.setItem('user', name)
 	if (localStorage.getItem("totalScore")===null){localStorage.setItem("totalScore", 0)}
 	if (localStorage.getItem("totalPeople")===null){localStorage.setItem("totalPeople", 0)}
+	get_views();
 }
 
 window.setInterval(
