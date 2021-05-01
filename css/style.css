@@ -67,6 +67,6 @@ margin-top:-.0625pc;
 	position: fixed;
 }
 
-#score-div, #lb{
+#score-div, #lb, #stats{
 	font-family: 'Roboto', sans-serif;
 }
