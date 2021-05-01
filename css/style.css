@@ -30,11 +30,11 @@ background-color:transparent;
 width:1.562500002pc;
 border-radius:50%;
 display:flex;
-left:7.500000024pt;
+left:0pt;
 text-align:center;
 }
 
-#hi,#github,#footer {
+#hi,#footer {
 height:25px;
 margin-top:.010416667in;
 }
@@ -43,9 +43,6 @@ margin-top:.010416667in;
 margin-left:.260416667in;
 }
 
-#github {
-margin:auto;
-}
 
 #f {
 height:18.75pt;
@@ -61,6 +58,12 @@ margin-top:-.0625pc;
 #lb{
 	margin-left:-43%;
 	margin-top:145px;
+	position: fixed;
+}
+
+#stats{
+	margin-left:-43%;
+	margin-top:20px;
 	position: fixed;
 }
 
