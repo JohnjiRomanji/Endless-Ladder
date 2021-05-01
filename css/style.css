@@ -25,7 +25,11 @@ width:100%;
 }
 
 #s-wrap{
-	margin-left: 3px;
+	margin-left: 5px;
+	width:20px;
+	height:20px;
+	vertical-align:middle;
+	text-align:center;
 }
 
 #footer {
