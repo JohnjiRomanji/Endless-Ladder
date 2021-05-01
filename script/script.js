@@ -13,6 +13,25 @@ var top_people_user=null
 var top_score=null
 var top_score_user=null
 
+var views=null
+
+function get_views(){
+	var url = "https://attentiveworriedcleantech.johnjiromanji.repl.co/visit/";
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	
+	xhr.onreadystatechange = function () {
+	   if (xhr.readyState === 4) {
+	      console.log(xhr.status);
+	      console.log(xhr.responseText);
+	      document.getElementById("views").innerHTML = JSON.parse(chr.responseText)['views'];
+	      views = JSON.parse(chr.responseText)['views']
+	   }};
+	
+	xhr.send();
+}
+
 function get_top_people(){
 	let url = "https://attentiveworriedcleantech.johnjiromanji.repl.co/top-people/";
 	
@@ -87,9 +106,11 @@ function on_load(){
 	c.innerHTML = localStorage.getItem('people')
 	get_top_score();
 	get_top_people();
+	if (localStorage.getItme('user')===null){
 	let name = window.prompt("Enter a username for if you beat the top score: ")
 	if (name===null){name="unnamed"}
 	localStorage.setItem('user', name)
+	}
 	if (localStorage.getItem("totalScore")===null){localStorage.setItem("totalScore", 0)}
 	if (localStorage.getItem("totalPeople")===null){localStorage.setItem("totalPeople", 0)}
 }
