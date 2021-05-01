@@ -25,8 +25,8 @@ function get_views(){
 	   if (xhr.readyState === 4) {
 	      console.log(xhr.status);
 	      console.log(xhr.responseText);
-	      document.getElementById("views").innerHTML = JSON.parse(chr.responseText)['views'];
-	      views = JSON.parse(chr.responseText)['views']
+	      document.getElementById("views").innerHTML = JSON.parse(xhr.responseText)['views'];
+	      views = JSON.parse(xhr.responseText)['views']
 	   }};
 	
 	xhr.send();
@@ -126,7 +126,7 @@ document.querySelector("body").style.height = "1000px";
 
 const ascii = "		╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>╬═╬<br>"
 
-const person = "<span class='person'>╬═╬ ☻/<br>╬═╬/▌ <br>╬═╬/  \<br></span>"
+const person = "<span class='person'>╬═╬ ☻/<br>╬═╬/▌ <br>╬═╬/  \\<br></span>"
 
 const h = window.innerHeight|| document.documentElement.clientHeight|| 
 document.body.clientHeight;
