@@ -75,6 +75,12 @@ margin-top:-.0625pc;
 	position: fixed;
 }
 
-#score-div, #lb, #stats, #footer{
+#score-div, #lb, #stats, #footer, #share{
 	font-family: 'Roboto', sans-serif;
+}
+
+#share{
+	margin-left:-43%;
+	margin-top:5px;
+	position: fixed;
 }
