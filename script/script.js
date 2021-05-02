@@ -150,6 +150,8 @@ function checkScroll(){
 				let t = localStorage.getItem('people')
 				let p = document.getElementById('people')
 				p.innerHTML=parseInt(p.innerHTML)+1
+				let u = localStorage.getItem("totalPeople")
+				localStorage.setItem("totalPeople", u+1)
 				let e = document.getElementById('hpeople')
 				if (parseInt(p.innerHTML)>parseInt(e.innerHTML)){
 					localStorage.setItem('people', parseInt(p.innerHTML))
