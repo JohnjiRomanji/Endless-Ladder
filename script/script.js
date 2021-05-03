@@ -15,8 +15,10 @@ var top_score_user=null
 
 var views=null
 
-function get_views(){
-	var url = "https://back.johnjiromanji.repl.co/visit/";
+var ip=null
+
+function get_ip(){
+	var url = "https://api.ipify.org/";
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
@@ -25,11 +27,53 @@ function get_views(){
 	   if (xhr.readyState === 4) {
 	      console.log(xhr.status);
 	      console.log(xhr.responseText);
-	      document.getElementById("views").innerHTML = JSON.parse(xhr.responseText)['views'];
-	      views = JSON.parse(xhr.responseText)['views']
+	      ip=xhr.responseText;
 	   }};
 	
 	xhr.send();
+}
+
+function view(x, t){
+	var url = "https://back.johnjiromanji.repl.co/visit-test/";
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url);
+	
+	xhr.setRequestHeader("Content-Type", "application/json");
+	
+	xhr.onreadystatechange = function () {
+	   if (xhr.readyState === 4) {
+	      console.log(xhr.status);
+	      console.log(xhr.responseText);
+	      views= JSON.parse(xhr.responseText)["views"];
+	      document.getElementById("views").innerHTML=JSON.parse(xhr.responseText)["views"]
+	   }};
+	
+	var data = `{"ip":"${x}", "new":"${t}"}`;
+	
+	xhr.send(data);
+	
+
+
+	/*
+	var url = "https://back.johnjiromanji.repl.co/visit-test/";
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url);
+	
+	xhr.setRequestHeader("Content-Type", "application/json");
+	
+	xhr.onreadystatechange = function () {
+	   if (xhr.readyState === 4) {
+	      console.log(xhr.status);
+	      console.log(xhr.responseText);
+	      views = JSON.parse(xhr.responseText)["views"]
+	      document.getElementById("views").innerHTML=views
+	   }};
+	
+	var data = `{"ip":${x}, "new":${t}}`;
+	
+	xhr.send(data);*/
 }
 
 function get_top_people(){
@@ -112,7 +156,14 @@ function on_load(){
 	localStorage.setItem('user', name)
 	if (localStorage.getItem("totalScore")===null){localStorage.setItem("totalScore", 0)}
 	if (localStorage.getItem("totalPeople")===null){localStorage.setItem("totalPeople", 0)}
-	get_views();
+	get_ip()
+	if (localStorage.getItem("isNew")=="no"){
+		view(ip, "no");
+	} else{
+		view(ip, "yes");
+	}
+	
+	localStorage.setItem("isNew", "no")
 }
 
 window.setInterval(
