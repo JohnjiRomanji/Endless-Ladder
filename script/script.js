@@ -34,7 +34,7 @@ function get_ip(){
 }
 
 function view(x, t){
-	var url = "https://back.johnjiromanji.repl.co/visit-test/";
+	var url = "https://back.johnjiromanji.repl.co/visit/";
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("POST", url);
