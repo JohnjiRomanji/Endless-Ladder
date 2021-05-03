@@ -18,7 +18,7 @@ var views=null
 var ip=null
 
 function get_ip(){
-	var url = "https://api.ipify.org/";
+	var url = "https://api.ipify.org?format=json";
 	
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url);
@@ -27,7 +27,7 @@ function get_ip(){
 	   if (xhr.readyState === 4) {
 	      console.log(xhr.status);
 	      console.log(xhr.responseText);
-	      ip=xhr.responseText;
+	      ip=JSON.parse(xhr.responseText)["ip"];
 	   }};
 	
 	xhr.send();
