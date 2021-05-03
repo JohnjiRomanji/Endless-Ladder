@@ -28,15 +28,14 @@ function get_ip(){
 	      console.log(xhr.status);
 	      console.log(xhr.responseText);
 	      ip=JSON.parse(xhr.responseText)["ip"];
+	      console.log(JSON.parse(xhr.responseText)["ip"])
+	      view(JSON.parse(xhr.responseText)["ip"], localStorage.getItem("isNew"));
 	   }};
 	
 	xhr.send();
 }
 
 function view(x, t){
-	if (ip===null) {
-		get_ip()
-	}
 	var url = "https://back.johnjiromanji.repl.co/visit/";
 	
 	var xhr = new XMLHttpRequest();
@@ -57,26 +56,6 @@ function view(x, t){
 	xhr.send(data);
 	
 
-
-	/*
-	var url = "https://back.johnjiromanji.repl.co/visit-test/";
-	
-	var xhr = new XMLHttpRequest();
-	xhr.open("POST", url);
-	
-	xhr.setRequestHeader("Content-Type", "application/json");
-	
-	xhr.onreadystatechange = function () {
-	   if (xhr.readyState === 4) {
-	      console.log(xhr.status);
-	      console.log(xhr.responseText);
-	      views = JSON.parse(xhr.responseText)["views"]
-	      document.getElementById("views").innerHTML=views
-	   }};
-	
-	var data = `{"ip":${x}, "new":${t}}`;
-	
-	xhr.send(data);*/
 }
 
 function get_top_people(){
@@ -160,12 +139,6 @@ function on_load(){
 	if (localStorage.getItem("totalScore")===null){localStorage.setItem("totalScore", 0)}
 	if (localStorage.getItem("totalPeople")===null){localStorage.setItem("totalPeople", 0)}
 	get_ip()
-	if (localStorage.getItem("isNew")=="no"){
-		view(ip, "no");
-	} else{
-		view(ip, "yes");
-	}
-	
 	localStorage.setItem("isNew", "no")
 }
 
@@ -325,7 +298,7 @@ function change_back_four() {
 
 const shareData = {
   title: 'Endless Ladder! ',
-  text: 'Check out this endless ladder website I found!',
+  text: `Check out this endless ladder website I found! It lets you play and earn point to end up on the top score leaderboard? My top scores are ${document.getElementById("hscore").innerHTML} and ${document.getElementById("hpeople").innerHTML}! Can you beat me?`,
   url: 'https://endless-ladder.netlify.app',
 }
 
