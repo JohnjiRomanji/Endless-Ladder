@@ -1,12 +1,3 @@
-/*
-
-	Image Sources: 
-		 - Share Icon: https://icons8.com/icon/97424/share-rounded
-		 - Github Logo: https://github.com/logos
-		 - Lightbulb Icon: https://www.clipartkey.com/view/iiiwTbT_lightbulb-png-icon-light-bulb-svg-icon/
-		 - Back Arrow Icon: https://www.freepik.com/free-icon/back-arrow_781308.htm
-*/
-
 var top_people=null
 var top_people_user=null
 
@@ -16,6 +7,69 @@ var top_score_user=null
 var views=null
 
 var ip=null
+
+var likes=null
+
+function get_likes(){
+	var url = "https://back.johnjiromanji.repl.co/get-likes/";
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", url);
+	
+	xhr.onreadystatechange = function () {
+	   if (xhr.readyState === 4) {
+	      console.log(xhr.status);
+	      console.log(xhr.responseText);
+	      likes=JSON.parse(xhr.responseText)["likes"]
+	      document.getElementById("likes").innerHTML=JSON.parse(xhr.responseText)["likes"]
+	   }};
+	
+	xhr.send();
+}
+
+function add_like(i){
+	var url = "https://back.johnjiromanji.repl.co/add-like/";
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url);
+	
+	xhr.setRequestHeader("Content-Type", "application/json");
+	
+	xhr.onreadystatechange = function () {
+	   if (xhr.readyState === 4) {
+	      console.log(xhr.status);
+	      console.log(xhr.responseText);
+	      localStorage.setItem("hasLiked", 'true')
+	      likes=JSON.parse(xhr.responseText)["likes"]
+	      document.getElementById("likes").innerHTML=JSON.parse(xhr.responseText)["likes"]
+	   }};
+	
+	var data = `{"ip":"${i}"}`;
+	
+	xhr.send(data);
+}
+
+function remove_like(i){
+	var url = "https://back.johnjiromanji.repl.co/remove-like/";
+	
+	var xhr = new XMLHttpRequest();
+	xhr.open("POST", url);
+	
+	xhr.setRequestHeader("Content-Type", "application/json");
+	
+	xhr.onreadystatechange = function () {
+	   if (xhr.readyState === 4) {
+	      console.log(xhr.status);
+	      console.log(xhr.responseText);
+	      localStorage.setItem("hasLiked", 'false')
+	      likes=JSON.parse(xhr.responseText)["likes"]
+	      document.getElementById("likes").innerHTML=JSON.parse(xhr.responseText)["likes"]
+	   }};
+	
+	var data = `{"ip":"${i}"}`;
+	
+	xhr.send(data);
+}
 
 function get_ip(){
 	var url = "https://api.ipify.org?format=json";
@@ -138,8 +192,9 @@ function on_load(){
 	localStorage.setItem('user', name)
 	if (localStorage.getItem("totalScore")===null){localStorage.setItem("totalScore", 0)}
 	if (localStorage.getItem("totalPeople")===null){localStorage.setItem("totalPeople", 0)}
-	get_ip()
-	localStorage.setItem("isNew", "no")
+	get_ip();
+	localStorage.setItem("isNew", "no");
+	get_likes();
 }
 
 window.setInterval(
@@ -253,15 +308,32 @@ window.addEventListener("scroll", function() {
 }}());
 
 function change() {
-	let i = document.getElementById('footer');
-	i.style.backgroundColor='#C0C0C0';
-
+	if (localStorage.getItem("hasLiked")!='true'){
+		let i = document.getElementById('like-wrap');
+		i.style.color='#00D100';
+	}
 }
 function change_back() {
-	let i = document.getElementById('footer')
-	i.style.backgroundColor='transparent'
-
+	if (localStorage.getItem("hasLiked")!='true'){
+		let i = document.getElementById('like-wrap')
+		i.style.color='black'
+	}
 }
+
+function click(){
+	console.log("hi")
+	let i = document.getElementById('like-wrap');
+	if (localStorage.getItem("hasLiked")!='true' || i.style.color=='black'){
+		i.style.color='#00D100';
+		add_like(ip);
+	} else if (localStorage.getItem("hasLiked")=='true' || i.style.color=="#00D100"){
+		i.style.color='black';
+		remove_like(ip);
+	} else{
+		alert("Something went wrong")
+	}
+}
+document.getElementById("like-wrap").addEventListener("click", click);
 
 function change_two() {
 	let i = document.getElementById('share');
