@@ -195,6 +195,10 @@ function on_load(){
 	get_ip();
 	localStorage.setItem("isNew", "no");
 	get_likes();
+	if (localStorage.getItem("hasLiked")=='true'){
+		let i = document.getElementById('like-wrap');
+		i.style.color='#00D100';
+	}
 }
 
 window.setInterval(
